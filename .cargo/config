@@ -1,0 +1,2 @@
+[build]
+target = "targets/i686-pc-windows-minicrt.json"

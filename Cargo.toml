@@ -1,0 +1,27 @@
+[package]
+name = "source-base"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "base"
+crate-type = ["cdylib"] 
+
+[dependencies]
+winapi = { version = "0.3.9", features = ["minwindef", "memoryapi", "consoleapi", "libloaderapi", "winnt", "wincon", "winuser", "processthreadsapi","handleapi","psapi","heapapi","synchapi"] }
+spin = "0.9.4"
+[dependencies.lazy_static]
+version = "1.4.0"
+features = ["spin_no_std"]
+
+
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+strip = true  
+opt-level = "z"  
+lto = true
+codegen-units = 1
+panic = "abort"
