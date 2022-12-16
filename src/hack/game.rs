@@ -1,2 +1,2 @@
-mod hooks;
+pub mod hooks;
 pub mod interfaces;
