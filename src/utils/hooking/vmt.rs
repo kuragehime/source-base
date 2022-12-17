@@ -1,11 +1,8 @@
 use core::ptr;
 
 use alloc::vec::Vec;
-use lazy_static::lazy_static;
-use spin::Mutex;
-use winapi::um::{memoryapi::VirtualProtect, winnt::PAGE_READWRITE};
 
-use crate::minicrt_println;
+use winapi::um::{memoryapi::VirtualProtect, winnt::PAGE_READWRITE};
 
 unsafe impl Sync for VMTHook {}
 unsafe impl Send for VMTHook {}

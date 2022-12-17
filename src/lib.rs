@@ -2,6 +2,8 @@
 #![no_main]
 #![feature(alloc_error_handler)]
 #![feature(pointer_byte_offsets)]
+#![feature(abi_thiscall)]
+#![allow(non_upper_case_globals)]
 use core::{
     alloc::{GlobalAlloc, Layout},
     panic::PanicInfo,
@@ -101,6 +103,5 @@ unsafe extern "system" fn _DllMainCRTStartup(module: *const u8, reason: u32, _: 
         _ =>
         {}
     }
-
     1
 }

@@ -1,16 +1,21 @@
 pub mod game;
+
 use winapi::{
     ctypes::c_void,
     um::{
-        libloaderapi::{FreeLibraryAndExitThread, GetModuleHandleA},
+        libloaderapi::FreeLibraryAndExitThread,
         synchapi::Sleep,
         winuser::{GetAsyncKeyState, VK_END},
     },
 };
 
 use crate::{
-    hack::game::interfaces::{self, InterfaceReg, INTERFACES},
-    iface, minicrt_println, to_cstr, to_rstr,
+    hack::game::{
+        hooks,
+        interfaces::{self},
+        netvars,
+    },
+    minicrt_println,
     utils::wrappers,
 };
 
@@ -26,7 +31,9 @@ pub unsafe extern "system" fn init(module: *mut c_void) -> u32
         "vguimatsurface.dll",
     ]);
 
-    game::hooks::init();
+    hooks::init();
+    netvars::init();
+
     loop
     {
         if GetAsyncKeyState(VK_END) != 0
@@ -38,6 +45,7 @@ pub unsafe extern "system" fn init(module: *mut c_void) -> u32
     }
     0
 }
+
 pub unsafe extern "system" fn terminate() -> u32
 {
     wrappers::free_console();

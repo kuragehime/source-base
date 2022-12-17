@@ -1,3 +1,4 @@
+pub mod vclient;
 use alloc::{collections::BTreeMap, string::String};
 use core::ffi::c_char;
 use lazy_static::lazy_static;

@@ -23,7 +23,10 @@ macro_rules! to_rstr {
 #[macro_export]
 macro_rules! iface {
     ($name:literal) => {{
-        *$crate::hack::INTERFACES.read().get($name).unwrap() as *mut usize
+        *$crate::hack::game::interfaces::INTERFACES
+            .read()
+            .get($name)
+            .unwrap() as *mut usize
     }};
 }
 
@@ -36,7 +39,7 @@ macro_rules! hook_add {
             .insert($name, $hook)
     }};
 }
-// ---- hook macros
+
 #[macro_export]
 macro_rules! hook_get {
     ($name:literal) => {{
