@@ -28,6 +28,23 @@ macro_rules! iface {
             .get($name)
             .unwrap() as *mut usize
     }};
+    ($name:literal,$t:ty) => {{
+        *$crate::hack::game::interfaces::INTERFACES
+            .read()
+            .get($name)
+            .unwrap() as *mut $t
+    }};
+}
+#[macro_export]
+macro_rules! iface_ref {
+    ($name:literal,$t:ty) => {{
+        (*$crate::hack::game::interfaces::INTERFACES
+            .read()
+            .get($name)
+            .unwrap() as *mut $t)
+            .as_ref()
+            .unwrap()
+    }};
 }
 
 // ---- hook macros

@@ -2,7 +2,7 @@ use alloc::{collections::BTreeMap, string::String};
 use lazy_static::lazy_static;
 use spin::RwLock;
 
-use crate::to_rstr;
+use crate::{iface_ref, to_rstr};
 
 use super::{
     interfaces::{vclient::VClient, INTERFACES},
@@ -14,11 +14,7 @@ lazy_static! {
 
 pub fn init()
 {
-    let vclient = unsafe {
-        (*INTERFACES.read().get("VClient").unwrap() as *mut VClient)
-            .as_ref()
-            .unwrap()
-    };
+    let vclient = unsafe { iface_ref!("VClient", VClient) };
 
     let mut client_class = vclient.GetAllClasses();
 

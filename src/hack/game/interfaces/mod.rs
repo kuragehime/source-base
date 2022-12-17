@@ -1,3 +1,6 @@
+pub mod vguisurface;
+pub mod vguipanel;
+pub mod venginevgui;
 pub mod vclient;
 use alloc::{collections::BTreeMap, string::String};
 use core::ffi::c_char;
