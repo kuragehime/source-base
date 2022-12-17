@@ -5,7 +5,7 @@ use spin::RwLock;
 use crate::{iface_ref, to_rstr};
 
 use super::{
-    interfaces::{vclient::VClient, INTERFACES},
+    interfaces::vclient::VClient,
     sdk::dt_recv::{CRecvTable, EPropType},
 };
 lazy_static! {

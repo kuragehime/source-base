@@ -1,7 +1,7 @@
-pub mod vguisurface;
-pub mod vguipanel;
-pub mod venginevgui;
 pub mod vclient;
+pub mod venginevgui;
+pub mod vguipanel;
+pub mod vguisurface;
 use alloc::{collections::BTreeMap, string::String};
 use core::ffi::c_char;
 use lazy_static::lazy_static;
@@ -70,12 +70,12 @@ pub fn init(mod_names: &[&str]) -> bool
                     .filter(|c| !c.is_numeric())
                     .collect::<String>();
                 let iface_addr = (current_ref.m_create_fn)();
-                minicrt_println!(
-                    "[{}] {} -> {:#x?}",
-                    name,
-                    iface_name,
-                    iface_addr as *mut usize
-                );
+                // minicrt_println!(
+                //     "[{}] {} -> {:#x?}",
+                //     name,
+                //     iface_name,
+                //     iface_addr as *mut usize
+                // );
                 INTERFACES.write().insert(iface_name, iface_addr as usize);
                 current = current_ref.m_p_next;
             }

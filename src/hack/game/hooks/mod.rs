@@ -4,14 +4,16 @@ mod painttraverse;
 
 pub fn init() -> bool
 {
+    painttraverse::init();
     paint::init();
     createmove::init();
-    painttraverse::init()
+    true
 }
 
 pub fn destroy() -> bool
 {
+    painttraverse::destroy();
     paint::destroy();
     createmove::destroy();
-    painttraverse::destroy()
+    true
 }
