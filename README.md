@@ -25,3 +25,9 @@ VSCode overrides:
 - Netvar manager
 - Detour hooking via gameoverlayrenderer.dll (createmove example)
 - VMT Hooking (paint example)
+
+## Bugs/TODO
+- Gameoverlay hooking seems to mess up if you unload and inject again, not sure why
+- Messy code in some places as im still learning proper rust game hacking practices (if they even exist yet) while writing this
+- Could be optimized further
+- Remove the random debug logging
