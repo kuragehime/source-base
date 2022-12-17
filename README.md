@@ -20,6 +20,8 @@ VSCode overrides:
 
 ## Features
 - HeapAlloc
-- print / console writer
+- print / Console writer
 - Interface list iteration
-- VMT Hooking
+- Netvar manager
+- Detour hooking via gameoverlayrenderer.dll (createmove example)
+- VMT Hooking (paint example)
