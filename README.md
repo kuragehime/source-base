@@ -24,10 +24,14 @@ VSCode overrides:
 - Interface list iteration
 - Netvar manager
 - Detour hooking via gameoverlayrenderer.dll (createmove example)
-- VMT Hooking (paint example)
+- VMT Hooking (paint + painttraverse example)
+- Engine rendering (drawrect example in painttraverse)
 
 ## Bugs/TODO
 - Gameoverlay hooking seems to mess up if you unload and inject again, not sure why
 - Messy code in some places as im still learning proper rust game hacking practices (if they even exist yet) while writing this
 - Could be optimized further
-- Remove the random debug logging
+- TODO: Remove the random debug logging
+- TODO: Add gameoverlayrenderer dx9 rendering 
+- TODO: Actually implement example features
+- TODO: Config system to go with above todo
