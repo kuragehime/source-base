@@ -4,7 +4,9 @@ Rust stdlib-less and msvcrt-less internal base for source engine games
 
 ## Info
 
-Build with `cargo build -Zbuild-std`
+Build with `cargo build -Zbuild-std` 
+
+If cargo can't find link.exe either add visual studio dirs to your path or run above command in a visual studio developer command prompt (i have no idea why this happens sorry)
 
 VSCode overrides:
 ```
