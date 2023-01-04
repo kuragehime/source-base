@@ -4,7 +4,9 @@ Rust stdlib-less and msvcrt-less internal base for source engine games
 
 ## Info
 
-Build with `cargo build -Zbuild-std`
+Build with `cargo build -Zbuild-std` 
+
+If cargo can't find link.exe either add visual studio dirs to your path or run above command in a visual studio developer command prompt (i have no idea why this happens sorry)
 
 VSCode overrides:
 ```
@@ -24,4 +26,14 @@ VSCode overrides:
 - Interface list iteration
 - Netvar manager
 - Detour hooking via gameoverlayrenderer.dll (createmove example)
-- VMT Hooking (paint example)
+- VMT Hooking (paint + painttraverse example)
+- Engine rendering (drawrect example in painttraverse)
+
+## Bugs/TODO
+- Gameoverlay hooking seems to mess up if you unload and inject again, not sure why
+- Messy code in some places as im still learning proper rust game hacking practices (if they even exist yet) while writing this
+- Could be optimized further
+- TODO: Remove the random debug logging
+- TODO: Add gameoverlayrenderer dx9 rendering 
+- TODO: Actually implement example features
+- TODO: Config system to go with above todo
