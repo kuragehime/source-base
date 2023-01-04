@@ -1,3 +1,4 @@
+//! Pattern scanner
 use pelite::{
     pattern::Atom,
     pe::{Pe, PeView},

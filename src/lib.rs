@@ -4,6 +4,11 @@
 #![feature(pointer_byte_offsets)]
 #![feature(abi_thiscall)]
 #![allow(non_upper_case_globals)]
+
+//! # source-base
+//!
+//! crt/stdless source engine internal base.
+
 use core::{
     alloc::{GlobalAlloc, Layout},
     panic::PanicInfo,
@@ -42,7 +47,7 @@ use winapi::{
         winnt::{DLL_PROCESS_ATTACH, DLL_PROCESS_DETACH, HEAP_ZERO_MEMORY},
     },
 };
-
+/// WinAPI global allocator struct
 pub struct HeapAllocator;
 
 unsafe impl GlobalAlloc for HeapAllocator

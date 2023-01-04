@@ -4,7 +4,7 @@ use vtables_derive::{has_vtable, virtual_index, VTable};
 #[has_vtable]
 #[derive(VTable, Debug)]
 pub struct VGUISurface {}
-
+unsafe impl Sync for VGUISurface {}
 #[allow(non_snake_case)]
 impl VGUISurface
 {

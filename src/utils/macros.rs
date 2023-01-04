@@ -1,5 +1,6 @@
 // --- string macros
 
+/// &str to cstring ptr conversion
 #[macro_export]
 macro_rules! to_cstr {
     ($rstring:expr) => {
@@ -9,6 +10,7 @@ macro_rules! to_cstr {
         concat!($rstring, "\0").as_ptr() as *const i8
     };
 }
+/// cstring ptr to &str conversion
 #[macro_export]
 macro_rules! to_rstr {
     ($cstring:expr) => {{
@@ -19,7 +21,7 @@ macro_rules! to_rstr {
 }
 
 // ---- interface macros
-
+/// Fetch interface pointer from global btreemap
 #[macro_export]
 macro_rules! iface {
     ($name:literal) => {{
@@ -35,31 +37,44 @@ macro_rules! iface {
             .unwrap() as *mut $t
     }};
 }
+/// Fetch interface reference from global btreemap
 #[macro_export]
 macro_rules! iface_ref {
     ($name:literal,$t:ty) => {{
-        (*$crate::hack::game::interfaces::INTERFACES
-            .read()
-            .get($name)
-            .unwrap() as *mut $t)
-            .as_ref()
-            .unwrap()
+        #[allow(unused_unsafe)]
+        unsafe {
+            (*$crate::hack::game::interfaces::INTERFACES
+                .read()
+                .get($name)
+                .unwrap() as *mut $t)
+                .as_ref()
+                .unwrap()
+        }
     }};
 }
 
-// ---- hook macros
+// ---- misc macros
+/// AsRef macro
 #[macro_export]
-macro_rules! hook_add {
-    ($name:literal,$hook:expr) => {{
-        $crate::hack::game::hooks::HOOKS
-            .write()
-            .insert($name, $hook)
+macro_rules! to_ref {
+    ($thing:expr) => {{
+        $thing.as_ref().unwrap()
     }};
 }
 
+// ---- netvar macros
+/// Caches offsets from the netvar BTreeMap
 #[macro_export]
-macro_rules! hook_get {
-    ($name:literal) => {{
-        $crate::hack::game::hooks::HOOKS.read().get($name).unwrap()
-    }};
+macro_rules! cache_offset {
+    ($self:expr,$netvar:literal) => {
+        static mut cache: usize = 0usize;
+        unsafe {
+            if cache == 0
+            {
+                cache = netvars::get($netvar);
+                return $self.get(cache);
+            }
+            return $self.get(cache);
+        }
+    };
 }

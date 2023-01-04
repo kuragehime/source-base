@@ -1,3 +1,4 @@
+//! Main hack entrypoint
 pub mod game;
 
 use winapi::{
@@ -31,9 +32,8 @@ pub unsafe extern "system" fn init(module: *mut c_void) -> u32
         "vguimatsurface.dll",
     ]);
 
-    hooks::init();
     netvars::init();
-
+    hooks::init();
     loop
     {
         if GetAsyncKeyState(VK_END) != 0

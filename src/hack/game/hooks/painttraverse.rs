@@ -1,9 +1,6 @@
 use core::mem;
 
-use crate::{
-    hack::game::interfaces::vguisurface::VGUISurface, iface, iface_ref,
-    utils::hooking::vmt::VMTHook,
-};
+use crate::{iface, utils::hooking::vmt::VMTHook};
 use lazy_static::lazy_static;
 
 use spin::RwLock;
@@ -44,9 +41,5 @@ unsafe extern "fastcall" fn painttraverse_detour(
     ecx: *const c_void, edx: *const c_void, panel: u32, force_repaint: bool, allow_force: bool,
 )
 {
-    let surface = iface_ref!("VGUI_Surface", VGUISurface);
-
     original(ecx, edx, panel, force_repaint, allow_force);
-    surface.SetDrawColor(255, 255, 255, 255);
-    surface.DrawFilledRect(50, 50, 100, 100);
 }

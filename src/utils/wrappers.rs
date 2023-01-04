@@ -1,9 +1,10 @@
+//! Wrappers for WinAPI functions
+use crate::to_cstr;
 use winapi::um::{
     consoleapi::AllocConsole,
     wincon::{FreeConsole, SetConsoleTitleA},
 };
 
-use crate::to_cstr;
 pub fn alloc_console(title: &str) -> bool
 {
     let alloc_console = unsafe { AllocConsole() };

@@ -1,3 +1,6 @@
+//! Game interfaces
+pub mod cliententitylist;
+pub mod engineclient;
 pub mod vclient;
 pub mod venginevgui;
 pub mod vguipanel;

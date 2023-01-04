@@ -1,3 +1,4 @@
+/// Netvar scanner and manager
 use alloc::{collections::BTreeMap, string::String};
 use lazy_static::lazy_static;
 use spin::RwLock;
@@ -14,7 +15,7 @@ lazy_static! {
 
 pub fn init()
 {
-    let vclient = unsafe { iface_ref!("VClient", VClient) };
+    let vclient = iface_ref!("VClient", VClient);
 
     let mut client_class = vclient.GetAllClasses();
 

@@ -7,6 +7,7 @@ use crate::hack::game::sdk::dt_recv::CRecvTable;
 
 type CreateClientClassFn = unsafe extern "system" fn(ent: i32, serial: i32);
 type CreateEventFn = unsafe extern "system" fn();
+
 #[derive(Clone)]
 #[repr(C)]
 pub struct ClientClass

@@ -1,3 +1,4 @@
+//! VMT Hooking
 use core::ptr;
 
 use alloc::vec::Vec;
@@ -23,6 +24,7 @@ impl VMTHook
             table:    Vec::new(),
         }
     }
+
     pub fn init(&mut self, base: *mut usize)
     {
         let mut og_table: Vec<usize> = Vec::new();
@@ -41,6 +43,7 @@ impl VMTHook
         self.og_table = og_table;
         self.table = alloc::vec![0; fn_count as usize];
     }
+
     pub fn hook_func(&mut self, idx: usize, hook: usize) -> &Self
     {
         self.table[idx] = hook;
@@ -65,6 +68,7 @@ impl VMTHook
         }
         self
     }
+
     pub fn destroy(&mut self, idx: usize) { self.hook_func(idx, self.og_table[idx]); }
     pub fn original(&self, idx: isize) -> usize { self.og_table[idx as usize] }
 }

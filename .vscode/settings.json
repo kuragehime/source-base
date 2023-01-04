@@ -1,0 +1,10 @@
+{
+	"rust-analyzer.checkOnSave.overrideCommand": [
+		"cargo",
+		"check",
+		"-Zbuild-std",
+		"--workspace",
+		"--message-format=json",
+		"--all-targets"
+	], 
+}

@@ -50,6 +50,7 @@ pub struct CRecvProxy
     pub element_index: i32,
     pub object_id:     i32,
 }
+
 #[repr(i32)]
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum EPropType

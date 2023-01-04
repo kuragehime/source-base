@@ -1,3 +1,5 @@
+//! Console writer
+
 extern "C" {
     fn printf(s: *const i8, ...) -> i32;
 }
@@ -49,6 +51,7 @@ unsafe fn minicrt_write(_handle: i32, bytes: &[u8]) -> Option<usize>
 {
     usize::try_from(printf(bytes.as_ptr() as _)).ok()
 }
+/// println macro
 #[macro_export]
 macro_rules! minicrt_println {
     () => { $crate::minicrt_println!("") };
